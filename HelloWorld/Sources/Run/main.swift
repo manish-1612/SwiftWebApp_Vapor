@@ -49,8 +49,7 @@ let drop = try Droplet()
 //}
 
 //IMPLEMENTING VIEW DISPLAY
-
-drop.get("/view") { request in
-    return try drop.view.make("view.html")
-}
+//drop.get("/view") { request in
+//    return try drop.view.make("view.html")
+//}
 try drop.run()
