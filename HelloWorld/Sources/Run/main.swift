@@ -1,29 +1,4 @@
 import App
-
-/// We have isolated all of our App's logic into
-/// the App module because it makes our app
-/// more testable.
-///
-/// In general, the executable portion of our App
-/// shouldn't include much more code than is presented
-/// here.
-///
-/// We simply initialize our Droplet, optionally
-/// passing in values if necessary
-/// Then, we pass it to our App's setup function
-/// this should setup all the routes and special
-/// features of our app
-///
-/// .run() runs the Droplet's commands, 
-/// if no command is given, it will default to "serve"
-//let config = try Config()
-//try config.setup()
-//
-//let drop = try Droplet(config)
-//try drop.setup()
-//
-//try drop.run()
-
 import Vapor
 
 let drop = try Droplet()
@@ -49,7 +24,26 @@ let drop = try Droplet()
 //}
 
 //IMPLEMENTING VIEW DISPLAY
-drop.get("/view") { request in
-    return try drop.view.make("view.html")
+//drop.get("/view") { request in
+//    return try drop.view.make("view.html")
+//}
+
+//IMPLEMENTING SENDING JSON TO DISPLAY
+//drop.get("/friends") { req in
+//    return try JSON(node: ["friends": [["name": "Sarah", "age": 33],
+//                                       ["name": "Steve", "age": 31],
+//                                       ["name": "Drew", "age": 35]]
+//        ])
+//}
+
+
+//IMPLEMENTING MODEL CREATION USING JSON
+drop.get("/friends") { req in
+    
+    let friends = [Friend(name: "Sarah", age: 33, email:"sarah@email.com"),
+                   Friend(name: "Steve", age: 31, email:"steve@email.com"),
+                   Friend(name: "Drew", age: 35, email:"drew@email.com")]
+    
 }
+
 try drop.run()
