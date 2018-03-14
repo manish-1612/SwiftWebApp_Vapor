@@ -44,6 +44,12 @@ drop.get("/friends") { req in
                    Friend(name: "Steve", age: 31, email:"steve@email.com"),
                    Friend(name: "Drew", age: 35, email:"drew@email.com")]
     
+
+    let friendsNode = try friends.makeNode(in: nil)
+    let nodeDictionary = ["friends": friendsNode]
+    return try JSON(node: nodeDictionary)
+
+    
 }
 
 try drop.run()

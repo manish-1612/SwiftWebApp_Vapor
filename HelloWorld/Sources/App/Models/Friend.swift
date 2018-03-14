@@ -8,6 +8,7 @@
 import Foundation
 import Vapor
 import FluentProvider
+import HTTP
 
 final class Friend : Model, RowRepresentable {
     
@@ -83,6 +84,18 @@ extension Friend: JSONConvertible {
         return json
     }
     
+}
+
+
+extension Friend: NodeRepresentable {
+    func makeNode(in context: Context) throws -> Node {
+        var node = Node(context)
+        try node.set("name", name)
+        try node.set("age", age)
+        try node.set("email", email)
+
+        return node
+    }
 }
 
 
